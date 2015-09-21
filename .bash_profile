@@ -258,7 +258,7 @@ EOT
 #   ---------------------------------------
 #   9.  DEVELOPMENT ENVIRONMENT
 #   ---------------------------------------
-    alias gs="git status"
+    alias gs="git fetch && git status"
     alias got="git "
     alias gm="git merge "
     alias go="git checkoout "
