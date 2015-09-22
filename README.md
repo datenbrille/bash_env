@@ -13,8 +13,13 @@ Addtionally I added liquidprompt as git submodule.
 There is no automatic installation, yet!
 
 1. Clone the repository to your home folder
-2. Do git submodule init && git submodule update
-2. Create symbolic link from local .bash_profile to ~/.bash_profile
+2. Do: 
+
+```bash
+git submodule init && git submodule update
+
+```
+3. Create symbolic link from local .bash_profile to ~/.bash_profile
 4. Create symbolic link from local .config to ~/.config
 
 # Warning
@@ -32,7 +37,9 @@ Then you have config files that are read by "interactive" shells (as in, ones co
 
 bash complicates this in that .bashrc is only read by a shell that's both interactive and non-login, so you'll find most people end up telling their .bash_profile to also read .bashrc with something like
 
+```bash
 [[ -r ~/.bashrc ]] && . ~/.bashrc
+```
 
 Other shells behave differently - eg with zsh, .zshrc is always read for an interactive shell, whether it's a login one or not.
 
