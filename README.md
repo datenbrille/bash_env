@@ -13,8 +13,9 @@ Addtionally I added liquidprompt as git submodule.
 There is no automatic installation, yet!
 
 1. Clone the repository to your home folder
+2. Do git submodule init && git submodule update
 2. Create symbolic link from local .bash_profile to ~/.bash_profile
-3. Create symbolic link from local .config to ~/.config
+4. Create symbolic link from local .config to ~/.config
 
 # Warning
 
