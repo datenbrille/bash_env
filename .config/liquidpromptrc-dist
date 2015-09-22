@@ -6,6 +6,9 @@
 # BEHAVIOUR #
 #############
 
+# The minimal value after which the runtime is displayed
+LP_RUNTIME_THRESHOLD=15
+
 # Maximal value under which the battery level is displayed
 # Recommended value is 75
 LP_BATTERY_THRESHOLD=75
