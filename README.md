@@ -1,7 +1,7 @@
 # My personal dotfiles
 
 This is just a little collection of things I found usefull in my
-daily bash work.
+daily bash work on a Mac OS X sytem. Some the shotcuts will only work there.
 
 The .bash_profile is based on http://natelandau.com/my-mac-osx-bash_profile/
 I added some more aliases and removed parts that are not usefull to me.
@@ -21,6 +21,12 @@ git submodule init && git submodule update
 ```
 3. Create symbolic link from local .bash_profile to ~/.bash_profile
 4. Create symbolic link from local .config to ~/.config
+5. If you want to use Sublime in command line
+
+```bash
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+```
+
 
 # Warning
 

@@ -13,6 +13,7 @@
 #  6.   Networking
 #  7.   System Operations & Information
 #  8.   Web Development
+#  9.   Development
 #
 #  ---------------------------------------------------------------------------
 
@@ -36,10 +37,9 @@
     done
     CWD="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-#   Set Paths
+#   Set Paths from Homebrew
 #   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin/"
-    export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+    export PATH="$PATH:/usr/local/bin"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -56,6 +56,12 @@
 #   Append commands to the bash command history file (~/.bash_history)
 #   instead of overwriting it.
     shopt -s histappend    
+
+#   Reading credentials
+#   ------------------------------------------------------------    
+    if [ -f ${CWD}/.config/credentials ]; then
+    	source ${CWD}/.config/credentials
+    fi
 
 #   Change Prompt
 #   ------------------------------------------------------------    
@@ -106,11 +112,6 @@
     mans () {
         man $1 | grep -iC2 --color=always $2 | less
     }
-
-#   showa: to remind yourself of an alias (given some part of it)
-#   ------------------------------------------------------------
-    showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
-
 
 #   -------------------------------
 #   3.  FILE AND FOLDER MANAGEMENT
@@ -237,8 +238,6 @@ EOT
 #   7.  SYSTEMS OPERATIONS & INFORMATION
 #   ---------------------------------------
 
-    alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when booted into single-user
-
 #   cleanupDS:  Recursively delete .DS_Store files
 #   -------------------------------------------------------------------
     alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
@@ -253,7 +252,7 @@ EOT
 #   -----------------------------------------------------------------------------------
     alias cleanupLS="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-#    screensaverDesktop: Run a screensaver on the Desktop
+#   screensaverDesktop: Run a screensaver on the Desktop
 #   -----------------------------------------------------------------------------------
     alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 
