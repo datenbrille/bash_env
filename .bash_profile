@@ -37,9 +37,15 @@
     done
     CWD="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-#   Set Paths from Homebrew
-#   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin"
+#   Read values which are used in interactive and in login shells
+#	------------------------------------------------------------
+	if [ -f ~/.bashrc ]; then
+	   source ~/.bashrc
+	fi
+
+	if [ -f ${CWD}/.bashrc ]; then
+	   source ${CWD}/.bashrc
+	fi
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -95,7 +101,6 @@
     alias which='type -all'                     # which:        Find executables
     alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
     alias show_options='shopt'                  # Show_options: display bash options settings
-    alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
     alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
     mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
     trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
@@ -119,9 +124,6 @@
 
     zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
     alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
-    alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
-    alias make5mb='mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
-    alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
@@ -210,26 +212,24 @@ EOT
 
     alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
     alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
-    alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
+    alias flushDNS='dscacheutil -flushcache; sudo killall -HUP mDNSResponder' # flushDNS:     Flush out the DNS Cache
     alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
     alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
     alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
     alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
     alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
     alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
-    alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 
 #   ii:  display useful host related informaton
 #   -------------------------------------------------------------------
     ii() {
-        echo -e "\nYou are logged on ${RED}$HOST"
+        echo -e "\nYou are logged on $(hostname -s)"
         echo -e "\nAdditionnal information:$NC " ; uname -a
-        echo -e "\n${RED}Users logged on:$NC " ; w -h
-        echo -e "\n${RED}Current date :$NC " ; date
-        echo -e "\n${RED}Machine stats :$NC " ; uptime
-        echo -e "\n${RED}Current network location :$NC " ; scselect
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-        #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+        echo -e "\nUsers logged on:$NC " ; w -h
+        echo -e "\nCurrent date :$NC " ; date
+        echo -e "\nMachine stats :$NC " ; uptime
+        echo -e "\nCurrent network location :$NC " ; scselect
+        echo -e "\n$Public facing IP Address :$NC " ;myip
         echo
     }
 
@@ -248,14 +248,6 @@ EOT
     alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
     alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
 
-#   cleanupLS:  Clean up LaunchServices to remove duplicates in the "Open With" menu
-#   -----------------------------------------------------------------------------------
-    alias cleanupLS="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
-#   screensaverDesktop: Run a screensaver on the Desktop
-#   -----------------------------------------------------------------------------------
-    alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
-
 #   ---------------------------------------
 #   8.  WEB DEVELOPMENT
 #   ---------------------------------------
@@ -264,7 +256,7 @@ EOT
 
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
-    httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
+    httpDebug () { /usr/bin/curl -s $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
 
 #   ---------------------------------------
 #   9.  DEVELOPMENT ENVIRONMENT
