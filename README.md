@@ -29,7 +29,7 @@ some of the default built in tools like cd.
 
 # Additional Notes
 
-This explanation is taken from [Stackoverflow](http://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment)
+This explanation is taken from [StackOverflow](http://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment)
 
 The main difference with shell config files is that some are only read by "login" shells (eg. when you login from another host, or login at the text console of a local unix machine). these are the ones called, say, .login or .profile or .zlogin (depending on which shell you're using).
 
