@@ -57,13 +57,13 @@
 #   instead of overwriting it.
     shopt -s histappend    
 
-#   Append commands to the history every time a prompt is shown,
-#   instead of after closing the session.
-    PROMPT_COMMAND='history -a'
-
 #   Change Prompt
 #   ------------------------------------------------------------    
     source ${CWD}/liquidprompt/liquidprompt
+
+#   Append commands to the history every time a prompt is shown,
+#   instead of after closing the session.
+    PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
