@@ -36,10 +36,6 @@
     done
     CWD="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-#   Change Prompt
-#   ------------------------------------------------------------    
-    source ${CWD}/liquidprompt/liquidprompt
-
 #   Set Paths
 #   ------------------------------------------------------------
     export PATH="$PATH:/usr/local/bin/"
@@ -53,6 +49,21 @@
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 #   ------------------------------------------------------------
     export BLOCKSIZE=1k
+
+#   Avoid succesive duplicates in the bash command history.
+    export HISTCONTROL=ignoredups
+
+#   Append commands to the bash command history file (~/.bash_history)
+#   instead of overwriting it.
+    shopt -s histappend    
+
+#   Append commands to the history every time a prompt is shown,
+#   instead of after closing the session.
+    PROMPT_COMMAND='history -a'
+
+#   Change Prompt
+#   ------------------------------------------------------------    
+    source ${CWD}/liquidprompt/liquidprompt
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -156,7 +167,7 @@ EOT
 #   ---------------------------
 #   4.  SEARCHING
 #   ---------------------------
-
+    alias grep='grep --color=auto --exclude-dir={\.svn,\.git}'
     alias qfind="find . -name "                 # qfind:    Quickly search for file
     ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
     ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
@@ -185,6 +196,7 @@ EOT
 #       http://www.macosxhints.com/article.php?story=20060816123853639
 #   ------------------------------------------------------------
     alias ttop="top -R -F -s 10 -o rsize"
+    alias p="ps aux | grep"
 
 #   my_ps: List processes owned by my user:
 #   ------------------------------------------------------------
@@ -263,6 +275,12 @@ EOT
     alias gm="git merge "
     alias go="git checkoout "
     alias gp="git push "
+    alias ga='git add '
+    alias gb='git branch '
+    alias gc='git commit'
+    alias gd='git diff'
     alias vssh="vagrant ssh"
     alias vu="vagrant up"
     alias vs="vagrant suspend"
+    alias vr='vagrant reload'
+    alias vp='vagrant provision'
