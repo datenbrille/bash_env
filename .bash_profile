@@ -266,7 +266,7 @@ EOT
     alias got="git "
     alias gs="git status"
     alias gm="git merge "
-    alias go="git checkoout "
+    alias go="git checkout "
     alias gp="git push "
     alias ga='git add '
     alias gb='git branch '
