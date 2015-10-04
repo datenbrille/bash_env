@@ -1,3 +1,6 @@
 [submodule "liquidprompt"]
 	path = liquidprompt
 	url = git@github.com:nojhan/liquidprompt.git
+[submodule "vimrc"]
+	path = vimrc
+	url = git@github.com:amix/vimrc.git
