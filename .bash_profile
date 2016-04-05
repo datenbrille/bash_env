@@ -265,13 +265,6 @@ EOT
     alias gsf="git fetch --all && git status"
     alias got="git "
     alias gs="git status"
-    alias gm="git merge "
-    alias go="git checkout "
-    alias gp="git push "
-    alias ga='git add '
-    alias gb='git branch '
-    alias gc='git commit'
-    alias gd='git diff'
     alias vssh="vagrant ssh"
     alias vu="vagrant up"
     alias vs="vagrant suspend"
