@@ -266,7 +266,6 @@ EOT
     alias got="git "
     alias gs="git status"
     alias vssh="vagrant ssh"
-    alias vu="vagrant up"
-    alias vs="vagrant suspend"
-    alias vr='vagrant reload'
-    alias vp='vagrant provision'
+    
+    export GOPATH=/Users/karlspies/Projects/workspace/go
+
