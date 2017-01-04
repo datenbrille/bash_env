@@ -268,4 +268,3 @@ EOT
     alias vssh="vagrant ssh"
     
     export GOPATH=/Users/karlspies/Projects/workspace/go
-
