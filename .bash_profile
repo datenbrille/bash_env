@@ -265,6 +265,8 @@ EOT
     alias gsf="git fetch --all && git status"
     alias got="git "
     alias gs="git status"
-    alias vssh="vagrant ssh"
+    alias cw="cd ~/Projects/workspace"
+    alias crm="cd ~/Projects/workspace/crm"
+
     
     export GOPATH=/Users/karlspies/Projects/workspace/go
