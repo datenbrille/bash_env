@@ -1,7 +1,7 @@
 #  ---------------------------------------------------------------------------
 #  
 #  All the credits go to: http://natelandau.com/my-mac-osx-bash_profile/
-#
+
 #  Description:  This file holds all my BASH configurations and aliases
 #
 #  Sections:
@@ -94,7 +94,7 @@
     alias .4='cd ../../../../'                  # Go back 4 directory levels
     alias .5='cd ../../../../../'               # Go back 5 directory levels
     alias .6='cd ../../../../../../'            # Go back 6 directory levels
-    alias edit='subl'                           # edit:         Opens any file in sublime editor
+    alias edit='code'                           # edit:         Opens any file in sublime editor
     alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
     alias ~="cd ~"                              # ~:            Go Home
     alias c='clear'                             # c:            Clear terminal display
@@ -268,5 +268,8 @@ EOT
     alias cw="cd ~/Projects/workspace"
     alias crm="cd ~/Projects/workspace/crm"
 
-    
-    export GOPATH=/Users/karlspies/Projects/workspace/go
+#   ---------------------------------------
+#   10.  Additonal Tools
+#   ---------------------------------------
+
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
