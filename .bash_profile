@@ -256,9 +256,8 @@ EOT
 #   9.  DEVELOPMENT ENVIRONMENT
 #   ---------------------------------------
     
-    alias gsf="git fetch --all && git status"
     alias got="git "
-    alias gs="git status"
+    alias gs="git status --short --branch"
     alias cw="cd ~/Projects/workspace"
     alias crm="cd ~/Projects/workspace/crm"
 
