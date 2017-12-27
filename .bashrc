@@ -1,4 +1,4 @@
 #   Set Paths from Homebrew
 #   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin"
-    export GOPATH="/Users/karlspies/Projects/workspace/go"
+    export GOPATH="/Volumes/Workspace/workspace/go"
+    export PATH="$PATH:/usr/local/bin:$GOPATH/bin"
