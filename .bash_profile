@@ -68,7 +68,7 @@
     if [ -f ${CWD}/.config/credentials ]; then
     	source ${CWD}/.config/credentials
     fi
-    ssh-add -K ~/.ssh/id_rsa ~/.ssh/innogames
+    ssh-add -K ~/.ssh/id_rsa
 
 #   Change Prompt
 #   ------------------------------------------------------------    
