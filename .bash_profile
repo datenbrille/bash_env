@@ -68,7 +68,7 @@
     if [ -f ${CWD}/.config/credentials ]; then
     	source ${CWD}/.config/credentials
     fi
-    ssh-add -K ~/.ssh/id_rsa
+    ssh-add -K ~/.ssh/id_rsa ~/.ssh/mysugr
 
 #   Change Prompt
 #   ------------------------------------------------------------    
@@ -258,8 +258,8 @@ EOT
     
     alias got="git "
     alias gs="git status --short --branch"
-    alias cw="cd ~/Projects/workspace"
-    alias crm="cd ~/Projects/workspace/crm"
+    alias backend="cd ~/Projects/mySugr/Backend/core"
+    alias mySugr="cd ~/Projects/mySugr"
 
 #   ---------------------------------------
 #   10.  Additonal Tools
