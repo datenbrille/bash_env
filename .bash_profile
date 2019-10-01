@@ -266,3 +266,7 @@ EOT
 #   ---------------------------------------
 
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/karl/.sdkman"
+[[ -s "/Users/karl/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/karl/.sdkman/bin/sdkman-init.sh"
